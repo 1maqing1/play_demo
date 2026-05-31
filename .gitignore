@@ -1,0 +1,40 @@
+# Visual Studio
+.vs/
+*.sln
+*.suo
+*.user
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+
+# 编译中间文件
+Binaries/
+Intermediate/
+DerivedDataCache/
+Saved/
+
+# VS Code
+.vscode/
+
+# 运行时文件
+*.pidb
+*.log
+*.openingtimes
+
+# 临时文件
+*.tmp
+*.temp
+
+# 本地配置
+*Encryption.ini
+*MachineId.ini
+
+# Rider
+.idea/
+
+# 大文件警告（骨骼网格体、贴图等太大了，不提交）
+*.fbx
+*.psd
+*.tga
+*.wav
+*.mp3
