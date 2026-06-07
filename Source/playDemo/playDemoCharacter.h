@@ -24,35 +24,37 @@ class AplayDemoCharacter : public ACharacter
 	GENERATED_BODY()
 
 	/** Pawn mesh: first person view (arms; seen only by self) */
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	USkeletalMeshComponent* FirstPersonMesh;
 
 	/** First person camera */
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	UCameraComponent* FirstPersonCameraComponent;
+
+public:
+	AplayDemoCharacter();
+
+	/** 射击函数 - 杀死所有敌人 */
+	UFUNCTION(BlueprintCallable, Category = "Combat")
+	void OnFire();
 
 protected:
 
 	/** Jump Input Action */
-	UPROPERTY(EditAnywhere, Category ="Input")
+	UPROPERTY(EditAnywhere, Category = "Input")
 	UInputAction* JumpAction;
 
 	/** Move Input Action */
-	UPROPERTY(EditAnywhere, Category ="Input")
+	UPROPERTY(EditAnywhere, Category = "Input")
 	UInputAction* MoveAction;
 
 	/** Look Input Action */
-	UPROPERTY(EditAnywhere, Category ="Input")
+	UPROPERTY(EditAnywhere, Category = "Input")
 	class UInputAction* LookAction;
 
 	/** Mouse Look Input Action */
-	UPROPERTY(EditAnywhere, Category ="Input")
+	UPROPERTY(EditAnywhere, Category = "Input")
 	class UInputAction* MouseLookAction;
-	
-public:
-	AplayDemoCharacter();
-
-protected:
 
 	/** Called from Input Actions for movement input */
 	void MoveInput(const FInputActionValue& Value);
@@ -61,26 +63,26 @@ protected:
 	void LookInput(const FInputActionValue& Value);
 
 	/** Handles aim inputs from either controls or UI interfaces */
-	UFUNCTION(BlueprintCallable, Category="Input")
+	UFUNCTION(BlueprintCallable, Category = "Input")
 	virtual void DoAim(float Yaw, float Pitch);
 
 	/** Handles move inputs from either controls or UI interfaces */
-	UFUNCTION(BlueprintCallable, Category="Input")
+	UFUNCTION(BlueprintCallable, Category = "Input")
 	virtual void DoMove(float Right, float Forward);
 
 	/** Handles jump start inputs from either controls or UI interfaces */
-	UFUNCTION(BlueprintCallable, Category="Input")
+	UFUNCTION(BlueprintCallable, Category = "Input")
 	virtual void DoJumpStart();
 
 	/** Handles jump end inputs from either controls or UI interfaces */
-	UFUNCTION(BlueprintCallable, Category="Input")
+	UFUNCTION(BlueprintCallable, Category = "Input")
 	virtual void DoJumpEnd();
 
 protected:
 
 	/** Set up input action bindings */
 	virtual void SetupPlayerInputComponent(UInputComponent* InputComponent) override;
-	
+
 
 public:
 
@@ -91,4 +93,3 @@ public:
 	UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
 
 };
-
